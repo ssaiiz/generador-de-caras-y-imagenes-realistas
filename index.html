@@ -1,99 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Generador Sigma de Caras Graciosas + Fotos Realistas</title>
+  <meta charset="UTF-8">
+  <title>Fotos Realistas Random</title>
   <style>
     body {
       background: #111;
       color: white;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       text-align: center;
-      padding: 40px;
+      font-family: sans-serif;
+      margin-top: 50px;
     }
-    h1 {
-      margin-bottom: 20px;
-      color: deeppink;
-      text-shadow: 0 0 10px hotpink;
+    img {
+      border: 4px solid #fff;
+      border-radius: 10px;
+      transition: transform 0.2s;
     }
-    button {
-      background: deeppink;
-      border: none;
-      border-radius: 12px;
-      padding: 15px 30px;
-      margin: 10px;
-      font-size: 20px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    button:hover {
-      background: hotpink;
-    }
-    #imagen {
-      margin-top: 30px;
-      max-width: 90vw;
-      max-height: 70vh;
-      border-radius: 20px;
-      box-shadow: 0 0 40px hotpink;
-      user-select: none;
-      object-fit: cover;
+    img:hover {
+      transform: scale(1.03);
     }
   </style>
 </head>
 <body>
 
-  <h1>Generador Sigma de Caras Graciosas + Fotos Realistas</h1>
-  <button id="fotoRealista">Foto Realista Random</button>
-  <button id="caraGraciosa">Cara Graciosa Random</button>
-
-  <div>
-    <img id="imagen" src="" alt="Imagen generada" />
-  </div>
+  <h1>Haz clic en la imagen pa ver otra 😎</h1>
+  <img id="randomImage" src="https://picsum.photos/500/300?random=1" alt="Imagen random" style="width: 500px; height: 300px; cursor: pointer;" onclick="cambiarImagen()" />
 
   <script>
-    const fotoRealistaBtn = document.getElementById('fotoRealista');
-    const caraGraciosaBtn = document.getElementById('caraGraciosa');
-    const imagen = document.getElementById('imagen');
-
-    // Función para fotos realistas con Picsum.photos (random)
-    function fotoRealista() {
-      // Picsum con tamaño random para que no repita fácil
-      const width = 800 + Math.floor(Math.random() * 200);
-      const height = 600 + Math.floor(Math.random() * 200);
-      imagen.src = `https://picsum.photos/${width}/${height}?random=${Date.now()}`;
-      imagen.alt = 'Foto realista random';
+    let count = 1;
+    function cambiarImagen() {
+      count++;
+      document.getElementById('randomImage').src = `https://picsum.photos/500/300?random=${count}`;
     }
-
-    // Lista de caras graciosas (pueden ser memes, caras animales graciosas o humanas)
-    const carasGraciosas = [
-      'https://i.imgur.com/2s7v7so.jpg', // Gato con cara rara
-      'https://i.imgur.com/ZJdUt3J.jpg', // Perro divertido
-      'https://i.imgur.com/Rq5NqHz.jpg', // Cara humana graciosa
-      'https://i.imgur.com/KuQTCkn.jpg', // Mono haciendo mueca
-      'https://i.imgur.com/47cKsiF.jpg', // Cara boba
-      'https://i.imgur.com/mXNoH7X.jpg', // Gato con gafas ridículo
-      'https://i.imgur.com/YF6hq0U.jpg', // Perro sorprendido
-      'https://i.imgur.com/6sVyWLq.jpg', // Cara rara humana
-      'https://i.imgur.com/1mtuUkF.jpg', // Animal bizarro
-      'https://i.imgur.com/WhDnQjv.jpg'  // Mono gracioso
-    ];
-
-    // Función para caras graciosas random
-    function caraGraciosa() {
-      const index = Math.floor(Math.random() * carasGraciosas.length);
-      imagen.src = carasGraciosas[index] + `?t=${Date.now()}`; // evitar cache
-      imagen.alt = 'Cara graciosa random';
-    }
-
-    fotoRealistaBtn.addEventListener('click', fotoRealista);
-    caraGraciosaBtn.addEventListener('click', caraGraciosa);
-
-    // Cargar una foto realista al principio
-    fotoRealista();
   </script>
 
 </body>
 </html>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4429480410828021"
-     crossorigin="anonymous"></script>
