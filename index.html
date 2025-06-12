@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Fotos Realistas Random</title>
-  <style>
-    body {
-      background: #111;
-      color: white;
-      text-align: center;
-      font-family: sans-serif;
-      margin-top: 50px;
-    }
-    img {
-      border: 4px solid #fff;
-      border-radius: 10px;
-      transition: transform 0.2s;
-    }
-    img:hover {
-      transform: scale(1.03);
-    }
-  </style>
-</head>
-<body>
+<h1>Haz clic en la imagen pa ver otra 😎</h1>
+<img id="randomImage" src="https://source.unsplash.com/random/500x300" alt="Imagen random" style="width: 500px; height: 300px; cursor: pointer;" onclick="cambiarImagen()" />
 
-  <h1>Haz clic en la imagen pa ver otra 😎</h1>
-  <img id="randomImage" src="https://picsum.photos/500/300?random=1" alt="Imagen random" style="width: 500px; height: 300px; cursor: pointer;" onclick="cambiarImagen()" />
-
-  <script>
-    let count = 1;
-    function cambiarImagen() {
-      count++;
-      document.getElementById('randomImage').src = `https://picsum.photos/500/300?random=${count}`;
-    }
-  </script>
-
-</body>
-</html>
+<script>
+  function cambiarImagen() {
+    const timestamp = new Date().getTime();
+    document.getElementById('randomImage').src = `https://source.unsplash.com/random/500x300?sig=${timestamp}`;
+  }
+</script>
